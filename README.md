@@ -10,3 +10,11 @@ docker-compose up
 ```
 docker-compose down
 ```
+
+## Backups
+
+The following command generates a dated tarball in the backups folder. It can be
+run regularly using crontab
+```shell
+./backup.sh
+```
