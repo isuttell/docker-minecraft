@@ -1,5 +1,6 @@
 # LTS Ubuntu
 FROM   ubuntu:14.04
+MAINTAINER Isaac Suttell <isaac@isaacsuttell.com>
 
 # Skip interactive prompts
 ENV    DEBIAN_FRONTEND noninteractive
@@ -13,6 +14,8 @@ RUN    echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-se
        echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
        apt-get --yes install curl oracle-java8-installer ; apt-get clean
 
+
+
 # Load our scripts
 ADD    ./start.sh /start.sh
 
@@ -21,6 +24,7 @@ RUN    chmod +x /start.sh
 
 # Make Minecraft Port available
 EXPOSE 25565
+EXPOSE 25565/udp
 
 # Create a persistent storage point for the world
 VOLUME ["/data"]
